@@ -1,0 +1,51 @@
+<html ng-app>  
+    <head>
+        <title>PROmise github api fetched data</title>
+        <script src="angular.js"></script>
+        <script src="app.js"></script>
+    </head>
+<body ng-controller="MainCtrl">
+  
+    <h1>{{message}}</h1>
+     
+        <div>
+                <div>
+                UserName : {{user.login}}
+                </div> 
+
+                <div>
+                Name : {{user.name}}
+                </div> 
+         
+                <div>
+                following: {{user.following}}
+                </div> 
+              
+                <div>
+                Location : {{user.location}}
+                </div>
+ 
+       <!--     <div>
+                Email:{{useremail.email}}
+            </div>
+            
+            <div>
+                EmailURl :{{user.emails_url}}<br>
+                second useremail {{useremail.emails_url}} 
+            </div>
+         -->
+            <div>
+                followers {{user.followers}}
+            </div>
+
+            <div>
+                repository : {{user.public_repos}}
+            </div><br><br>
+
+            <div>
+                <img src="{{user.avatar_url}}" title="{{user.name}}">
+            </div>
+
+        </div>
+    </body>
+</html> 
