@@ -1,0 +1,54 @@
+<html ng-app = "githubviewer" >  
+    <head>  
+        <title>NG-CLICK,Filter ng-show ng-hide  to form submit github api fetched data</title>
+        <script src="angular.js"></script>
+        <script src="app.js"></script>
+          
+    </head>
+<body ng-controller="MainCtrl"> 
+    <h1>{{message}}</h1>
+        <div>   
+            <div>  <h1>{{error}}</h1></div>
+        <!--    {{username}}-->
+            <form name="searchUser" ng-submit="search(username)">
+                <input required type="search" placeholder="Username to find" ng-model="username" />
+                <input type="submit" value="search" >
+            </form>
+
+        <div ng-show="user"> <!--you can also use ng-hide"!user" or ng-show= "user" means hide other data until user Enter username for Github account-->            <!--hide other data unitl user enter information about user and click on seach button-->
+            <h2>{{user.name}}</h2>
+             <img src="{{user.avatar_url}}" title="{{user.name}}">
+            <!-- it also fetch image  <img src="https://avatars3.githubusercontent.com/u/{{user.id}}" title="{{user.name}}">-->
+            
+              Sorting order:
+            <select ng-model="reposortOrder">
+                <option value="+name">Repositary Accending</option>
+                <option value="-name">Repositary Decending</option>
+                <option value="+stargazers_count">Stars Accending</option>
+                <option value="-stargazers_count">Stars Decending</option>
+                <option value="+language">Language Accending</option>
+                <option value="-language">Language Decending</option>
+            </select>
+            
+        </div>
+           
+        <table ng-hide="!user">       <!--you can also use ng-show = "user" until user enter information about user hide all details of application -->        <!--hide table before user Enter username in search box (1) use also -->
+            <thead>
+                <tr>
+                    <td>Repos Name</td>
+                    <td>Repos Stars{{repos.stargazers_count}}</td>
+                    <td>Repos Languaage{{repos.language}}</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="onrepos in repos | orderBy: reposortOrder">
+                <td>{{onrepos.name}}</td>
+                <td>{{onrepos.stargazers_count | number}}</td>
+                <td>{{onrepos.language}}</td>
+                </tr>
+            </tbody>
+        </table>
+
+
+    </body>
+</html> 
