@@ -1,0 +1,107 @@
+<html ng-app = "githubviewer" >  
+    <head>  
+        <title>NG-repeat to form submit github api fetched data</title>
+        <script src="angular.js"></script>
+        <script src="app.js"></script>
+    </head>
+<body ng-controller="MainCtrl"> 
+    <h1>{{message}}</h1>
+        <div>   
+            <div>  <h1>{{error}}</h1></div>
+        <!--    {{username}}-->
+            <form name="searchUser" ng-submit="search(username)">
+                <input required type="search" placeholder="Username to find" ng-model="username" />
+                <input type="submit" value="search" >
+            </form>
+
+        <div>
+            <h2>{{user.name}}</h2>
+             <img src="{{user.avatar_url}}" title="{{user.name}}">
+            <!-- it also fetch image  <img src="https://avatars3.githubusercontent.com/u/{{user.id}}" title="{{user.name}}">-->
+        </div>
+
+        <table> 
+            <thead>
+                <tr>
+                    <td>Repos Name</td>
+                    <td>Repos Stars{{repos.stargazers_count}}</td>
+                    <td>Repos Languaage{{repos.language}}</td>
+                    
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="onrepos in repos">
+                
+                <td>{{onrepos.name}}</td>
+                <td>{{onrepos.stargazers_count | number}}</td>
+                <td>{{onrepos.language}}</td>
+                </tr>
+            </tbody>
+        </table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--
+<div>  
+            <div>
+                <h2>{{username}}</h2>
+                 <img src="{{user.avatar_url}}" title="{{user.name}}">
+            </div>
+
+
+
+            <div>
+                UserName : {{user.email}}
+                </div> 
+
+            <div>
+                Name : {{user.name}}
+            </div> 
+         
+            <div>
+                following: {{user.following}}
+            </div> 
+            <div>
+                Location : {{user.location}}
+            </div>
+       <!--     <div>
+                Email:{{useremail.email}}
+            </div>
+            
+            <div>
+                EmailURl :{{user.emails_url}}<br>
+                second useremail {{useremail.emails_url}} 
+            </div>
+              <!--div>
+                followers {{user.followers}}
+            </div>
+
+            <div>
+                repository : {{user.public_repos}}
+            </div>-->
+
+             <!--  <div>
+                <img src="{{user.avatar_url}}" title="{{user.name}}">
+        
+            </div>
+
+        </div> -->
+    </body>
+</html> 
