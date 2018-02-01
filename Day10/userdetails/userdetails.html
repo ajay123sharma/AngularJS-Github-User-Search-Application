@@ -1,0 +1,33 @@
+<div > <!--remove ng-show="user" add in ng-include diretctive to show user details until user put user name in search box and hit search button -->
+            <h2>{{user.name}}</h2>
+             <img src="{{user.avatar_url}}" title="{{user.name}}">
+            <!-- it also fetch image  <img src="https://avatars3.githubusercontent.com/u/{{user.id}}" title="{{user.name}}">-->
+             
+              Sorting order:
+            <select ng-model="reposortOrder">
+                <option value="+name">Repositary Accending</option>
+                <option value="-name">Repositary Decending</option>
+                <option value="+stargazers_count">Stars Accending</option>
+                <option value="-stargazers_count">Stars Decending</option>
+                <option value="+language">Language Accending</option>
+                <option value="-language">Language Decending</option>
+            </select>
+            
+        </div>
+           
+        <table > <!--remove ng-show="user" or ng-hide="!user" add in ng-include diretctive to show user details until user put user name in search box and hit search button -->
+            <thead>
+                <tr>
+                    <td>Repos Name</td>
+                    <td>Repos Stars{{repos.stargazers_count}}</td>
+                    <td>Repos Languaage{{repos.language}}</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="onrepos in repos | orderBy: reposortOrder">
+                <td>{{onrepos.name}}</td>
+                <td>{{onrepos.stargazers_count | number}}</td>
+                <td>{{onrepos.language}}</td>
+                </tr>
+            </tbody>
+        </table>
