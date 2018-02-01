@@ -1,0 +1,28 @@
+<html ng-app = "githubviewer" >  
+    <head>  
+        <title>$anchorScroll and $location service</title> <!--ng-include use for add other html code inside our index.html from another html file-->
+        <script src="angular.js"></script>
+        <script src="app.js"></script>
+ 
+           
+    </head>
+<body ng-controller="MainCtrl">  
+    <h1>{{message}}</h1>
+          
+            <div>  <h1>{{error}}</h1></div>
+        <!--    {{username}}-->
+                {{countdown}}
+            <form name="searchUser" ng-submit="search(username)">
+                <input required type="search" placeholder="Username to find" ng-model="username" />
+                <input type="submit" value="search" >
+            </form>
+         <div id="userDetails">
+        <div ng-include="'userdetails/userdetails.html'" ng-show="user"></div>
+         <!--ng-include use for add other html code inside our index.html from another html file-->
+         </div>
+          
+           
+
+
+    </body>
+</html> 
